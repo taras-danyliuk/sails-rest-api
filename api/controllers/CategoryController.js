@@ -35,6 +35,8 @@ module.exports = {
     if (products.length > 0) {
       return res.ok(products[0]);
     }
+
+    return res.badRequest(`product ${req.params.categoryId} not found`);
   },
 
   create: async (req, res) => {
