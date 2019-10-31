@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+
+  sails:
+    image: taras-danyliuk/sails-rest-api
+    ports:
+      - 80:1337
+    volumes:
+      - .:/usr/src/app
+    links:
+      - mongo
+    deploy:
+      replicas: 3
